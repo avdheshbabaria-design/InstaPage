@@ -272,7 +272,7 @@ export default function App() {
     if (synthMode === 'image' && !synthImage) return;
 
     setIsSynthesizing(true);
-    const apiKey = ""; 
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY; 
 
     try {
       let response, result, textOutput;
@@ -449,7 +449,7 @@ export default function App() {
     if (!promptInput.trim() || isGeneratingStrategy) return;
     setIsGeneratingStrategy(true);
     
-    const apiKey = ""; 
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY; 
     const currentStyleContext = `Theme: ${globalStyles.theme}. Background: ${globalStyles.background}. Accents: ${globalStyles.accents}. Quality: ${globalStyles.quality}.`;
     
     const systemPrompt = `You are a high-end creative director at a top-tier advertising agency. The user wants a 9-grid puzzle post launch strategy for: "${promptInput}". 
@@ -535,7 +535,7 @@ export default function App() {
     if (!promptText.trim()) return;
 
     setPosts(prev => prev.map(p => p.id === postId ? { ...p, isGenerating: true, error: null } : p));
-    const apiKey = ""; 
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY; 
     
     let styleRules = Object.values(globalStyles).filter(v => v.trim() !== '').join(", ");
     if (!styleRules) styleRules = "Brutalist corporate minimalism, Swiss design, uncluttered, high-end commercial aesthetic. Architectural precision, sharp lighting.";
